@@ -25,23 +25,21 @@ var mainCmd = &cobra.Command{
 		if nv, err := nvidia.NewNvHelper(); err != nil {
 			return err
 		} else {
-			err = nv.Detect()
-
-			if err != nil {
-				return err
-			}
-
 			devs := nv.Devices
-
 			for i, dev := range devs {
-				fmt.Printf("dev %d: %+v", i, dev)
-				node = *dev.NVMLDev.CPUAffinity
+				fmt.Printf("dev %d: %+v\n", i, dev)
+
+				fmt.Printf("busid is %s", dev.NVMLDevice.PCI.BusID)
+				node := *(dev.NVMLDevice.CPUAffinity)
+				cpus, err := numa.CPUsOfNode(int(node))
+				if err != nil {
+					return err
+				}
 				fmt.Printf("node %d cpus: %+v\n", node, cpus)
-				all, free := numa.MemoryOfNode(node)
+				all, free := numa.MemoryOfNode(int(node))
 				fmt.Printf("node %d size: %d MB\n", node, numa.MemInMB(all))
 				fmt.Printf("node %d free: %d MB\n", node, numa.MemInMB(free))
 			}
-
 		}
 
 		return nil

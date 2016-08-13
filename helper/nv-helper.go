@@ -42,7 +42,7 @@ func (this *NvidiaHelper) detect() (err error) {
 		}
 
 		for i, dev := range this.Devices {
-			this.NumaMap[i] = *dev.CPUAffinity
+			this.NumaMap[uint(i)] = *dev.CPUAffinity
 		}
 	}
 
