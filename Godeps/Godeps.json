@@ -1,0 +1,46 @@
+{
+	"ImportPath": "github.com/cheyang/nv-tools",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v66",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/NVIDIA/nvidia-docker/tools/src/cuda",
+			"Comment": "v1.0.0-rc.3-16-g257f5d6",
+			"Rev": "257f5d61f774b41f5b80453ce8b29eb5b01cdbea"
+		},
+		{
+			"ImportPath": "github.com/NVIDIA/nvidia-docker/tools/src/ldcache",
+			"Comment": "v1.0.0-rc.3-16-g257f5d6",
+			"Rev": "257f5d61f774b41f5b80453ce8b29eb5b01cdbea"
+		},
+		{
+			"ImportPath": "github.com/NVIDIA/nvidia-docker/tools/src/nvidia",
+			"Comment": "v1.0.0-rc.3-16-g257f5d6",
+			"Rev": "257f5d61f774b41f5b80453ce8b29eb5b01cdbea"
+		},
+		{
+			"ImportPath": "github.com/NVIDIA/nvidia-docker/tools/src/nvml",
+			"Comment": "v1.0.0-rc.3-16-g257f5d6",
+			"Rev": "257f5d61f774b41f5b80453ce8b29eb5b01cdbea"
+		},
+		{
+			"ImportPath": "github.com/cheyang/numa-utils/numa",
+			"Rev": "0d6638535896463853f7c82f6d09adab1a2464e4"
+		},
+		{
+			"ImportPath": "github.com/inconshreveable/mousetrap",
+			"Rev": "76626ae9c91c4f2a10f34cad8ce83ea42c93bb75"
+		},
+		{
+			"ImportPath": "github.com/spf13/cobra",
+			"Rev": "7c674d9e72017ed25f6d2b5e497a1368086b6a6f"
+		},
+		{
+			"ImportPath": "github.com/spf13/pflag",
+			"Rev": "f676131e2660dc8cd88de99f7486d34aa8172635"
+		}
+	]
+}
