@@ -27,7 +27,9 @@ var mainCmd = &cobra.Command{
 		} else {
 			devs := nv.Devices
 			for i, dev := range devs {
-				fmt.Printf("dev %d: %+v", i, dev)
+				fmt.Printf("dev %d: %+v\n", i, dev)
+
+				fmt.Printf("busid is %s", dev.NVMLDevice.PCI.BusID)
 				node := *(dev.NVMLDevice.CPUAffinity)
 				cpus, err := numa.CPUsOfNode(int(node))
 				if err != nil {
