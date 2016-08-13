@@ -30,9 +30,19 @@ var mainCmd = &cobra.Command{
 			if err != nil {
 				return err
 			}
-		}
 
-		nodes, err := numa.Nodes()
+			devs := nv.Devices
+
+			for i, dev := range devs {
+				fmt.Printf("dev %d: %+v", i, dev)
+				node = *dev.NVMLDev.CPUAffinity
+				fmt.Printf("node %d cpus: %+v\n", node, cpus)
+				all, free := numa.MemoryOfNode(node)
+				fmt.Printf("node %d size: %d MB\n", node, numa.MemInMB(all))
+				fmt.Printf("node %d free: %d MB\n", node, numa.MemInMB(free))
+			}
+
+		}
 
 		return nil
 	},

@@ -31,17 +31,17 @@ func NewNvHelper() (*NvidiaHelper, error) {
 	return nv, nil
 }
 
-func (this *NvidiaHelper) detect() error {
+func (this *NvidiaHelper) detect() (err error) {
 
 	if len(this.Devices) == 0 {
 		this.Devices, err = nvidia.LookupDevices()
 
 		if err != nil {
-			log.Warningf("Cannot detect the nvidia gpu %q", err)
-			return fmt.Errorf("Failed to detect the nvidia gpu device")
+			// log.Warningf("Cannot detect the nvidia gpu %q", err)
+			return fmt.Errorf("Cannot detect the nvidia gpu %q", err)
 		}
 
-		for i, dev := range devices {
+		for i, dev := range this.Devices {
 			this.NumaMap[i] = *dev.CPUAffinity
 		}
 	}
