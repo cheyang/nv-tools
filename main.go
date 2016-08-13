@@ -29,6 +29,7 @@ var mainCmd = &cobra.Command{
 			for i, dev := range devs {
 				fmt.Printf("dev %d: %+v", i, dev)
 				node := *(dev.NVMLDevice.CPUAffinity)
+				cpus := numa.CPUsOfNode(int(node))
 				fmt.Printf("node %d cpus: %+v\n", node, cpus)
 				all, free := numa.MemoryOfNode(node)
 				fmt.Printf("node %d size: %d MB\n", node, numa.MemInMB(all))
